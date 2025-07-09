@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Los pueblos más bonitos de Cataluña</title>
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <link id="tema" rel="stylesheet" href="./css/dark.css">
+    <link rel="stylesheet" href="./css/estilos.css">
+    <link rel="shortcut icon" href="./img/catalonia.png">
+</head>
+
+<body>
+    <h1>Los pueblos más bonitos de Cataluña</h1>
+    <p><i>...según encuesta a los blogueros de viajes</i></p>
+    <img src="./img/catalunya.png" alt="Mapa de Cataluña">
+    <p><label for="tema-sel">Seleccionar tema</label>
+        <select id="tema-sel" onchange="cambiarTema(this.value)">
+            <option value="dark">dark</option>
+            <option value="light">light</option>
+        </select>
+
+    </p>
+    <p>Esta ha sido una iniciativa de los chicos del blog
+        <a target="_blank" rel="noopener noreferrer"
+            href="https://www.milviatges.com/2016/los-pueblos-mas-bonitos-de-cataluna/"><em>MilViatges</em></a>
+        (donde hay más pueblos referenciados)
+    </p>
+    <p>El resultado de los 10 primeros pueblos ganadores se muestra en este site. ¡Agrega el tuyo!</p>
+
+    <ol>
+        <li><a target="_blank" rel="noopener noreferrer" href="https://www.elproximodestino.com/">Próximo destino</a>
+            <cite>(Meritxell Beltran)</cite>: <a id="v1" href="alcanar.html"><strong>Les Cases d'Alcanar</strong></a>
+        </li>
+        <li><a target="_blank" rel="noopener noreferrer" href="https://elspetitsviatgers.com/">Petits Viatgers</a>
+            <cite>(Montse Delgado)</cite>: <a id="v2" href="siurana.html"><strong>Siurana</strong></a>
+        </li>
+        <li><a target="_blank" rel="noopener noreferrer" href="https://www.unviajedelibros.com/">Un viaje de libros</a>
+            <cite>(Silvia Montarerio)</cite>: <a id="v3" href="calella.html"><strong>Calella de Palafrugell</strong></a>
+        </li>
+        <li><a target="_blank" rel="noopener noreferrer" href="https://www.365sabadosviajando.com/">365 días
+                viajando</a><cite> (Virginia y Fran)</cite>: <a id="v4" href="tossa.html"><strong>Tossa de
+                    Mar</strong></a></li>
+        <li>Apuntes de viaje - bloc privado <cite>(María Teresa Trilla)</cite>: <a id="v5"
+                href="prades.html"><strong>Prades</strong></a></li>
+        <li><a target="_blank" rel="noopener noreferrer" href="https://www.conarenaenlamochila.com/">Con arena en la
+                Mochila</a> <cite>(Robert y Eli)</cite>: <a id="v6" href="besalu.html"><strong>Besalú</strong></a></li>
+        <li><a target="_blank" rel="noopener noreferrer" href="https://cometeelmundo.net/">Cómete el mundo</a>
+            <cite>(Henar y Aitor)</cite>: <a id="v7" href="pals.html"><strong>Pals</strong></a>
+        </li>
+        <li><a target="_blank" rel="noopener noreferrer" href="https://es.quadernsdebitacola.com/">Quaderns de
+                bitàcola</a> <cite>(Cèlia i Enric)</cite>: <a id="v8"
+                href="montblanc.html"><strong>Montblanc</strong></a>
+        </li>
+        <li><a target="_blank" rel="noopener noreferrer" href="https://www.viatgespedraforca.cat/">Viatges
+                Pedraforca</a> <cite>(Daniel)</cite>: <a id="v9" href="castellar.html"><strong>Castellar de
+                    n'Hug</strong></a>
+        </li>
+        <li><a target="_blank" rel="noopener noreferrer" href="http://www.estemdevacances.com/">Estem de vacances</a>
+            <cite>(Xavi i Txell)</cite>: <a id="v10" href="peratallada.html"><strong>Peratallada</strong></a>
+        </li>
+        <li>Uno de los pueblos que más me gustan <cite>(Yolanda Fontanillas)</cite>: <a id="v11"
+                href="camprodon.html"><strong>Camprodon</strong></a></li>
+    </ol>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const params = new URLSearchParams(window.location.search);
+        const tema = params.get("tema") || "dark"; // Tema por defecto
+        cambiarTema(tema);
+        document.getElementById('tema-sel').value = tema;
+    });
+
+    function cambiarTema(tema) {
+        // Cambiar el CSS del tema
+        document.getElementById('tema').href = "./css/" + tema + ".css";
+
+        // IDs de enlaces para actualizar href
+        const ids = ['v1','v2','v3','v4','v5','v6','v7','v8','v9','v10','v11'];
+
+        // Actualizar cada enlace con el parámetro tema
+        ids.forEach(id => {
+            const link = document.getElementById(id);
+            if(link) {
+                const baseUrl = link.href.split('?')[0];  // quitar parámetros previos
+                link.href = `${baseUrl}?tema=${tema}`;
+            }
+        });
+    }
+</script>
+
+
+
+
+</body>
+
+</html>
